@@ -3,6 +3,10 @@
 # dependencies
 node_modules/
 
+
+.src/
+secrets
+
 # Expo
 .expo/
 dist/

@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/native'
-import { Echange } from '../components/Echange'
+import { Exchange } from '../components/Exchange'
 
-export const HomeScreen: React.FC = () => {
+export const HomeScreen: FC = () => {
 	return (
 		<BackgroundContainer>
-			<Echange />
+			<Exchange />
 		</BackgroundContainer>
 	)
 }

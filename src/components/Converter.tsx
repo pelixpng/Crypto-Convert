@@ -1,19 +1,19 @@
 import styled from 'styled-components/native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import React, { useState } from 'react'
-import { Input } from './Input'
+import React, { FC, useState } from 'react'
+import { CoinsList, Input } from './Input'
 
-interface IConverter {
+interface Converter {
 	currency1: Coins
 	currency2: Coins
 	setСurrency1: (value: Coins) => void
 	setСurrency2: (value: Coins) => void
 }
 
-export const Converter: React.FC<IConverter> = props => {
+export const Converter: FC<Converter> = props => {
 	const [value1, setValue1] = useState('0')
 	const [value2, setValue2] = useState('0')
-	const [items, setItems] = useState([
+	const [items, setItems] = useState<CoinsList[]>([
 		{ label: 'USDT', value: 'USDT' },
 		{ label: 'BTC', value: 'BTC' },
 		{ label: 'ETH', value: 'ETH' }

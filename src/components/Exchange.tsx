@@ -1,15 +1,15 @@
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { CurrentRateText } from './СurrentRateText'
 import { Converter } from './Converter'
 
-export const Echange: React.FC = () => {
+export const Exchange: FC = () => {
 	const [currency1, setСurrency1] = useState<Coins>('BTC')
 	const [currency2, setСurrency2] = useState<Coins>('USDT')
 	return (
 		<ExchangeContainer>
-			<CurrentRateText currency1={currency1} currency2={currency2} />
+			<CurrentRateText coin1={currency1} coin2={currency2} />
 			<Converter
 				currency1={currency1}
 				currency2={currency2}

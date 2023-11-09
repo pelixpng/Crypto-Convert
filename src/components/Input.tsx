@@ -1,27 +1,27 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 import { converter } from '../utils/Converter'
 import { Dropdown } from 'react-native-element-dropdown'
 
-interface IInput {
-	setInput: (value: any) => void
+interface Props {
+	setInput: (value: string) => void
 	input: string
 	value: Coins
-	items: ICoinsList[]
-	count: any
+	items: CoinsList[]
+	count: string
 	quote: Coins
-	setValue: (value: any) => void // у влада спросить
-	setItems: (value: any) => void
+	setValue: (value: Coins) => void
+	setItems: (value: CoinsList[]) => void
 	onChangeValue: (value: string) => void
 }
 
-interface ICoinsList {
-	label: string
-	value: string
+export interface CoinsList {
+	label: Coins
+	value: Coins
 }
 
-export const Input: React.FC<IInput> = props => {
+export const Input: FC<Props> = props => {
 	return (
 		<InputContainer>
 			<TextInput
@@ -41,10 +41,12 @@ export const Input: React.FC<IInput> = props => {
 				labelField="label"
 				valueField="value"
 				value={props.value}
+				iconColor="#cbcbcb"
 				onChange={async item => {
 					props.setValue(item.value)
-					const tmp = item.value
-					props.onChangeValue(await converter(props.count, tmp, props.quote))
+					props.onChangeValue(
+						await converter(props.count, item.value, props.quote)
+					)
 				}}
 			/>
 		</InputContainer>
@@ -62,6 +64,7 @@ const TextInput = styled.TextInput`
 	height: 54px;
 	width: 75%;
 	border-right-width: 1px;
+	border-color: #cbcbcb;
 	padding-left: 10px;
 	padding-right: 10px;
 `
